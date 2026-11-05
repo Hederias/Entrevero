@@ -1,0 +1,58 @@
+> The one situation where it would bite again is if you later make the content wider than main’s min-width, for example by widening .body1 to 1000px or raising the .side margins without also raising main’s min-width. If the left column ever disappears again, that’s the first thing to check. The safe fix is the same as before: raise min-width on main, or replace justify-content: center with margin: 0 auto on .body1.
+- Si hago a body1 más ancho, hacer a main más ancho
+
+> El padding va en main, no en html, porque... si main rebalsa, se come el padding de html, antes de pasar a tener scrollbars
+
+> "The key idea is that display: flex on a container lines its direct children up in a row, so each child looks like a column. flex-direction: column stacks them vertically instead.
+
+1. Three columns (three elements side by side)
+
+html
+<div class="row">
+  <div>A</div>
+  <div>B</div>
+  <div>C</div>
+</div>
+css
+.row { display: flex; gap: 20px; }
+.row > div { flex: 1; background: lightgreen; padding: 20px; }
+
+flex: 1 makes each child grow equally, so they split the width in thirds. Change one to flex: 2 and it becomes twice as wide as the others.
+
+2. One column with three elements (stacked)
+
+css
+.col { display: flex; flex-direction: column; gap: 20px; }
+html
+<div class="col">
+  <div>A</div>
+  <div>B</div>
+  <div>C</div>
+</div>
+
+This is what your .side does with its two <pre> blocks. Without flex, plain block elements would also stack, but this lets you use gap and alignment.
+
+3. Three columns, each with three stacked elements (nested)
+
+html
+<div class="row">
+  <div class="col"><p>1</p><p>2</p><p>3</p></div>
+  <div class="col"><p>4</p><p>5</p><p>6</p></div>
+  <div class="col"><p>7</p><p>8</p><p>9</p></div>
+</div>
+css
+.row { display: flex; gap: 20px; }
+.col { flex: 1; display: flex; flex-direction: column; gap: 10px; }
+
+The outer flex makes the three columns, and each inner flex stacks its own items."
+
+" 
+"
+gap: 60px on main sets the distance from each side column to the center box. Change that one number to move both sides closer or farther.
+"
+
+"
+.body1 (...) has flex: none; width: 800px(. S)o with both sides now at flex: none as well, nothing grows. The three items (...) sit in a row, and "justify-content: center" plus "gap" control where they land and how far apart they are.
+"
+
+
