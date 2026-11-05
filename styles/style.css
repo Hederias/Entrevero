@@ -3,30 +3,27 @@ html {
   font-size: 16px;
   /* Replace PLACEHOLDER with the font-family property value you got from Google Fonts */
   font-family: "Playwrite GB S", cursive;
+  background-color: #466940;
+  zoom: 0.8;
 }
+
+
+body {
+  width: max-content;   /* body wraps the real content width */
+  margin: 8px auto 10%;
+  padding: 0 110px;
+}
+
 
 h1 {
   font-size: 40px;
   text-align: center;
-  border: 5px ridge #326E28;
+  border: 5px ridge #326e28;
   margin: 20px 0px;
   padding: 0px 0px 0px;
-  height: 70px ;
-  color: #326E28;
+  height: 70px;
+  color: #326e28;
   text-shadow: 2px 1px 1px grey;
-}
-
-p,
-
-li {
-  font-size: 16px;
-  line-height: 2;
-  letter-spacing: 1px;
-}
-
-html {
-  background-color: #466940;
-  padding: 0 50px;
 }
 
 img {
@@ -38,17 +35,38 @@ img {
   background-size: 100px auto;
 }
 
+.pre-box {
+  color: lightgreen;
+  margin: 0;
+  font-size: 13px;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 50px 0px 0px;
+  gap: 50px;
+}
+
 .body1 {
-  width: 1000px;
-  margin: 4% auto 0;
+  flex: none;
+  width: 800px;
+  min-height: 50%;
+  margin: 0px 0 0;
   background-color: #c5d6c2;
   padding: 20px 20px 20px 20px;
+  outline: darkgreen 5px solid;
+  outline-offset: -6px;
+}
+
+.side {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  margin: 110px 100px 0; /* tune so the boxes line up with the form */
 }
 
 
-pre {
-  color: lightgreen;
-  width: fit-content;
-  margin: 80px auto 20%;
-  font-size: min(16px, calc((100vw - 100px) / 90));
-}
