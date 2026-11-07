@@ -8,9 +8,11 @@ html {
 
 a:link {
   color: rgb(63, 112, 204);
+  font-weight: 550;
 }
 a:visited {
   color: rgb(63, 112, 204);
+  font-weight: 550;
 }
 
 body {
@@ -60,6 +62,8 @@ img {
   width: 140px;
   background-color: #c5d6c2;
   padding: 10px;
+  outline: darkgreen 3px dashed;
+  outline-offset: -6px;
 }
 
 .pre-box-2-in{
@@ -97,8 +101,8 @@ article pre {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 30px;
-  margin: 110px 100px 0; /* tune so the boxes line up with the form */
+  gap: 0px;
+  margin: 0; /* tune so the boxes line up with the form */
 }
 
 footer {
@@ -123,4 +127,13 @@ footer pre {
 .contact {
   color: whitesmoke;
   margin: 10px 0 0 140px;
+}
+
+p{
+  font-family: consolas, monospace;
+}
+
+h3{
+  font-family: consolas,monospace;
+  text-decoration: underline;
 }
