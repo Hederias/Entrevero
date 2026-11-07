@@ -1,0 +1,105 @@
+[ Options/Two side cartels: ]
+
+> The one situation where it would bite again is if you later make the content wider than main’s min-width, for example by widening .body1 to 1000px or raising the .side margins without also raising main’s min-width. If the left column ever disappears again, that’s the first thing to check. The safe fix is the same as before: raise min-width on main, or replace justify-content: center with margin: 0 auto on .body1.
+- Si hago a body1 más ancho, hacer a main más ancho
+
+> El padding va en main, no en html, porque... si main rebalsa, se come el padding de html, antes de pasar a tener scrollbars
+
+> "The key idea is that display: flex on a container lines its direct children up in a row, so each child looks like a column. flex-direction: column stacks them vertically instead.
+
+1. Three columns (three elements side by side)
+
+html
+<div class="row">
+  <div>A</div>
+  <div>B</div>
+  <div>C</div>
+</div>
+css
+.row { display: flex; gap: 20px; }
+.row > div { flex: 1; background: lightgreen; padding: 20px; }
+
+flex: 1 makes each child grow equally, so they split the width in thirds. Change one to flex: 2 and it becomes twice as wide as the others.
+
+2. One column with three elements (stacked)
+
+css
+.col { display: flex; flex-direction: column; gap: 20px; }
+html
+<div class="col">
+  <div>A</div>
+  <div>B</div>
+  <div>C</div>
+</div>
+
+This is what your .side does with its two <pre> blocks. Without flex, plain block elements would also stack, but this lets you use gap and alignment.
+
+3. Three columns, each with three stacked elements (nested)
+
+html
+<div class="row">
+  <div class="col"><p>1</p><p>2</p><p>3</p></div>
+  <div class="col"><p>4</p><p>5</p><p>6</p></div>
+  <div class="col"><p>7</p><p>8</p><p>9</p></div>
+</div>
+css
+.row { display: flex; gap: 20px; }
+.col { flex: 1; display: flex; flex-direction: column; gap: 10px; }
+
+The outer flex makes the three columns, and each inner flex stacks its own items."
+
+" 
+"
+gap: 60px on main sets the distance from each side column to the center box. Change that one number to move both sides closer or farther.
+"
+
+"
+.body1 (...) has flex: none; width: 800px(. S)o with both sides now at flex: none as well, nothing grows. The three items (...) sit in a row, and "justify-content: center" plus "gap" control where they land and how far apart they are.
+"
+
+
+
+
+[ JBABN ]
+
+> So, I did before the "center the central box in the page, by creating three flex columns, and making the side columns a fixed width".
+How am I doing it here? Is it the sum of the <pre> characters' width, plus the margins, creating a "fixed width"?
+
+Yes, that’s what’s happening, and it only works by near-coincidence.
+
+Both .side columns have flex: none and no width, so each one is as wide as its content:
+
+Content width: the widest line inside its <pre> blocks, in characters × the width of one monospace character at 13px.
+Plus the margins: 60px on each side, the same on both columns.
+
+justify-content: center centers the whole row (left column, article, right column). The article is only centered if the two columns come out the same width.
+
+They don’t quite match here. The widest line on the left is the + ~ ~ ~ ~ ~ ~ ~ ~ + border, which is 19 characters. On the right,   salida a algún bar is 20 characters (2 spaces of indent plus 18). The right column is therefore one character wider, about 8px before zoom, so the article is shifted about half of that (≈4px) to the left. That’s why it looks centered but is slightly off. If you edit any text, the columns change width and the article shifts again.
+
+To make it deterministic, as in your three-column version, give both sides the same fixed width:
+
+css
+.side {
+  flex: none;
+  width: 170px;   /* same for both, wide enough for the longest line */
+  ...
+}
+
+Keep align-items: center so the <pre> boxes sit in the middle of that width. Now the columns are identical by definition, and the article stays centered no matter what text goes in them. Pick a width at least as wide as the longest line (20 characters × about 8px = 160px), or the text will overflow the column.
+
+
+
+> <p style="display: flex; justify-content: space-between;">
+  <span>Anotarse:</span>
+  <span>Algunas actividades se hacen cuando se junte suficiente quórum</span>
+</p>
+- Eso es para poner en una línea alineada a la izq, una porción de la línea alineada a la derecha
+
+-> O este:
+<div style="display: flex; justify-content: space-between; align-items: center; margin: -20px 0 20px 100px;">
+  <p style="margin: 0; font-family: consolas; color: whitesmoke;">Para oficiantes relativamente de la zona</p>
+  <p style="margin: 0; font-family: consolas; color: whitesmoke;">Para agregarse a la lista, contactar a la vecinal</p>
+</div>
+
+- Donde, alineo las lineas adentro aunque tengan distinto font-size, 
+- Y le saco margen a los de adentro, porque sino suman su margen al div

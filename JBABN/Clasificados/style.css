@@ -1,0 +1,130 @@
+html {
+  /* px means "pixels". The base font size is now 10 pixels high */
+  font-size: 16px;
+  /* Replace PLACEHOLDER with the font-family property value you got from Google Fonts */
+  font-family: "Playwrite GB S", cursive;
+  background-color: #466940;
+  zoom: 0.8
+}
+
+a:link {
+  color: rgb(63, 112, 204);
+}
+a:visited {
+  color: rgb(63, 112, 204);
+}
+
+
+body {
+  width: max-content;   /* body wraps the real content width */
+  margin: 8px auto 10%;
+  padding: 0 110px;
+}
+
+.top-banner {
+  height: 100px;
+  width: 90%;
+  margin: 15px 0 0 5%;      /* 120-100/2=y, lo corre [y] para la izquierda sino se pasan los 20 que sobran todos para la derecha */
+  background-image: url("images/mimikyu.png");
+  background-repeat: repeat-x;
+  background-position: left;
+  background-size: auto;      /* opcional: 100px*/
+}
+
+nav, nav a:link, nav a:visited{
+  margin: 10px auto 0px;
+  color: whitesmoke;
+  font-size: 20px;
+  text-align: center;
+  }
+
+li {
+  font-size: 16px;
+  line-height: 2;
+  letter-spacing: 1px;
+}
+
+h1 {
+  font-size: 40px;
+  text-align: center;
+  border: 5px ridge #326e28;
+  margin: 20px 0px;
+  padding: 0px 0px 0px;
+  height: 70px;
+  color: #326e28;
+  text-shadow: 2px 1px 1px grey;
+}
+
+img {
+  display: block;
+  margin: 0px 0 auto;
+  height: 100px;
+  object-fit: cover;
+  width: 100%;
+  background-size: 100px auto;
+}
+
+
+.pre-box {
+  color: lightgreen;
+  margin: 0;
+  font-size: 15px;
+}
+
+main {
+  display: flex;
+  justify-content: left;
+  align-items: flex-start;
+  padding: 50px 0px 0px;
+  margin: 0 0 50px 0;
+  gap: 20px;
+}
+
+.body1 {
+  flex: none;
+  width: 950px;
+  margin: 0px 0 0 70px;
+  height: 40px;
+  background-color: #c5d6c2;
+  padding: 20px 20px 20px 20px;
+  outline: darkgreen 5px solid;
+  outline-offset: -6px;
+}
+
+.body1 h2,
+.body1 p {
+  margin-left: 40px;   /* how far in you want the text */
+  margin-right: 40px;
+}
+
+.side {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  margin: 110px 60px 0; /* tune so the boxes line up with the form */
+}
+
+pre {
+  color: lightgreen;
+  margin: 0;
+  font-size: 15px;
+}
+
+.p-foot {
+  font-family: consolas, monospace;
+  color: rgb(128, 219, 128);
+  margin: 10px 0 0 21px;
+  font-size: 20px;
+  word-spacing: 50%;
+}
+
+
+.card {
+    background: #c5d6c2;
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    align-items: center;
+    margin: 35px auto 0px;
+    }
